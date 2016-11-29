@@ -1,0 +1,26 @@
+<div class="login">
+<img src="./partials/kick5logo.jpg">
+<h2>Making it easier to find time to kick it with your friends.</h2>
+
+<div class="">
+  <h2>Login</h2>
+  <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+  <form class="form" ng-submit="login()">
+    <div class="form-group">
+      
+      <input class="centerInput oswald" type="text" size="65" placeholder="Your Awesome Username" name="username" ng-model="loginForm.username" required>
+    </div>
+    <div class="form-group">
+      
+        <input class="centerInput oswald" type="password" size="65" placeholder="Your Secret Password" name="password" ng-model="loginForm.password" required>
+      </div>
+      <div>
+        <button type="submit" class="createhangout btn" ng-disabled="disabled">SUBMIT</button>
+      </div>
+  </form>
+<br>
+<div>
+<a href="#/register" class="purple">Haven't registered yet?  Sign up here!</a>
+</div>
+</div>
+</div>

@@ -1,0 +1,17 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+addons:
+  apt:
+    sources:
+    - mongodb-3.2-precise
+    packages:
+    - mongodb-org-server
+deploy:
+  provider: heroku
+  api_key:
+    secure: kgLqaM71+ijXHt6Vd4Hl6vAXXeg3RiCnVQCCgz8MXUIF76U1caG8NsIjZvYn2vPazdzoPyBGP5tBdLrNij9MsrW0ACk1UyqgTIJT1LxiTQNLnD6Eo+5J4igKSuwc4VIORpFvU8PHmDjHw3nt9bmljq6Mzxx1eGEYGTEvz2r65yt97nahmwzPzWZ7OA89QsP0zbQeZJFmWSR638wJTgQ6ic6+gaLz8Tngd4knArJXdnxRVf5OwCIB9CM9kPAyRL8VwYau0W3NZS/LnOPIE4XlFIgnzyRxTLxWZNW46dMlCSrzdCVd3CYziYKRdEOXDJJYQEaYmHW/VcOuTbhjvcw3wP2XcIyyxpoEp74x/pG1H+l7m0Sr5Rnli/Qc89LGCQI3CBbvgu8FocKww7s/k21MmtK5lCd+UZhoJfbCMp0jS65dYfJsknkLORwqpYeoiFfA+7hw12wIljoU2knMSqQvlbppUr6zt7lIjCKAP4rcojW7p3OXtoxgnHyy57UDKHypioTkcK3zNlz0g+u6tjI4RGOdZ3PGwrccgTJh/e6HtzwZaebps9VVsQqZunj7VjSv5mPb4nJ/WfELj+zMMnAKMskuGe+rblVt0sS1i8+a0AzJuB0EbmxUqglF9dixz25hsa6YF8w72wvesX+6bSxGhuqvOszh+E+HpgZdggjul/A=
+  app: mean-auth-master
+  on:
+    repo: dubrawr/mean-auth-master

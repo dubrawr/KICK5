@@ -1,0 +1,63 @@
+
+
+
+<div ng-init="showHangouts()" class="left container">
+	<h3>Welcome to your</h3>
+	<h1 class="welcome gray">DASHBOARD</h1>
+
+
+<div class="inlineBlock" ng-repeat="result in results">
+	<a class="purpleBG hangout btn btn-md oswald" id="{{ result._id }}" href="#/calendar/{{ result._id }}"><span class="verticallyAlign">{{ result.hangout | uppercase}}</span></a>
+</div>
+
+<!-- Trigger the modal with a button -->
+<button type="button" style="display: block; margin-top: 50px" class="createhangout btn oswald" data-toggle="modal" ng-click="showMap()" data-target="#myModal">CREATE NEW HANGOUT</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Create a new Hangout.</h4>
+			</div>
+			<div class="modal-body">
+				<p>
+					<!-- new hangout form-->
+					<form id="newHangoutForm" ng-submit="createHangout()">
+						Hangout Name<br>
+						<input id="hangoutName" size="35" type="text" value="" ng-model="hangoutForm.name" placeholder="Choose a cool Hangout name."required>
+						<br>
+						Start Date<br>
+						<input ui-date id="Date" name="start" type="text" ng-model="hangoutForm.startDate" required>
+						<br>
+						End Date<br>
+						<input ui-date id="Date2" name="end" type="text" ng-model="hangoutForm.endDate" required>
+						<br>
+						Invites<br>
+						<input id="invitedUsers" size="35" type="text" value="" ng-model="hangoutForm.invited" placeholder="Separate each username with a space.">
+						<br><br>
+						<input id="pac-input" class="controls" type="text"
+    placeholder="Enter a location">
+<div id="map"></div>
+						<br><br>
+						<input class="btn btn-info btn-sm" type="submit" value="Submit">
+					</form>
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="newHangout" class="btn btn-default" data-dismiss="modal">I'm not ready, take me to my dashboard.</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+</div>
+
+<br><br><br>
+<div class="left" ng-controller="logoutController">
+	<a ng-click='logout()' class="btn btn-default">Logout</a>
+</div>

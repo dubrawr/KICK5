@@ -1,0 +1,31 @@
+<div class="left">
+
+
+
+<h1 class="gray inlineBlock" ng-init="grabInfo()">{{ hangoutTitle | uppercase }}</h1>
+
+<div class="floatRight" id="deleteButton" ng-if="owner" ng-click="delete()"></div>
+<div ng-if="location" id="map"></div>
+
+<div ng-repeat="day in days">
+	<div class="scheduleDates">{{ day.moment | amDateFormat:'dddd, MMMM Do YYYY' }}</div>
+	
+	<div class="inlineBlock availability">
+	
+		<label class="oswald inlineBlock"><input ng-model="day.availability" type="checkbox">Available?</label>
+		<div class="inlineBlock availableUsers purple">{{day.availableUsers[0] | uppercase}}</div>
+		<div class="inlineBlock availableUsers purple">{{day.availableUsers[1] | uppercase}}</div>
+		<div class="inlineBlock availableUsers purple">{{day.availableUsers[2] | uppercase}}</div>
+		<div class="inlineBlock availableUsers purple">{{day.availableUsers[3] | uppercase}}</div>
+		<div class="inlineBlock availableUsers purple">{{day.availableUsers[4] | uppercase}}</div>
+
+	</div>
+</div>
+<button class="btn pinkButton marginTop inlineBlock" ng-click="save()">Save</button>
+
+<a class="btn btn-default floatRight marginTop" href="#/">Back to Dashboard</a>
+</div>
+
+</div>
+
+

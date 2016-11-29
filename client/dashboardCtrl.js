@@ -1,0 +1,84 @@
+angular.module('myApp').controller('dashboardController',
+	['$scope', 'AuthService', '$http', '$timeout', function($scope, AuthService, $http, $timeout){
+	$scope.createHangout = function(){
+		AuthService.createHangout(
+			$scope.hangoutForm.name,
+			$scope.hangoutForm.startDate,
+			$scope.hangoutForm.endDate,
+			$scope.hangoutForm.invited,
+			$scope.place,
+			$scope.latLong
+		);
+		$scope.showHangouts();
+	};
+	$scope.showHangouts = function(){
+		$http({
+			url: '/user/hangouts',
+			method: 'GET'
+		}).then(function(response){
+			$scope.results = response.data;
+			console.log(response.data);
+		
+		});
+	};
+
+	//trying to add maps here:
+	$scope.initMap = function() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 33.9932485, lng: -117.9266394},
+    zoom: 13
+  });
+
+  var input = document.getElementById('pac-input');
+
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.bindTo('bounds', map);
+
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  var infowindow = new google.maps.InfoWindow();
+  var marker = new google.maps.Marker({
+    map: map
+  });
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
+
+  autocomplete.addListener('place_changed', function() {
+    infowindow.close();
+    var place = autocomplete.getPlace();
+    console.log(place.place_id);
+   
+    
+    $scope.place = place.place_id;
+    if (!place.geometry) {
+      return;
+    }
+
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(17);
+       console.log(place.geometry.location);
+       $scope.latLong = place.geometry.location;
+    }
+
+    // Set the position of the marker using the place ID and location.
+    marker.setPlace({
+      placeId: place.place_id,
+      location: place.geometry.location
+    });
+    marker.setVisible(true);
+
+    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+        'Place ID: ' + place.place_id + '<br>' +
+        place.formatted_address);
+    infowindow.open(map, marker);
+  });
+
+};
+$scope.showMap = function(){
+$timeout($scope.initMap, 1000);
+};	
+}]);
