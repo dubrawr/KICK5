@@ -78,7 +78,7 @@ router.post('/hangouts', function(request, response) {
 
   var hangoutName = request.body.hangout.trim();
 
-  var invited = request.body.invited.trim();
+  var invited = request.body.invited;
   // console.log(invited);
 
   var startDate = request.body.startDate.trim();
@@ -106,7 +106,7 @@ router.post('/hangouts', function(request, response) {
                 return response.status(500).json();
               }
               console.log(createdHangout + 'this is the created hangout');
-              return response.status(201).json();
+              return response.status(201).json(createdHangout);
             });
           }
 

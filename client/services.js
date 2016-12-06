@@ -129,7 +129,7 @@ angular.module('myApp').factory('AuthService',
 
     // creates a hangout
     function createHangout(hangout, startDate, endDate, invited, place, location){
-      var deferred = $q.defer();
+      // var deferred = $q.defer();
 
       var data = {
       hangout: hangout,
@@ -139,23 +139,22 @@ angular.module('myApp').factory('AuthService',
       place: place,
       location: location
       };
-      $http({
+      return $http({
       url: '/user/hangouts',
       method: 'POST',
       data: data,
-      })
-      .success(function(data, status){
-        if(status === 200 && data.status){
-          deferred.resolve();
-        } else {
-          deferred.reject();
-        }
-      })
-      .error(function(data){
-        deferred.reject();
       });
-      console.log(data);
-      return deferred.promise;
+      // .then(function(data, status){
+      //   if(status === 200 && data.status){
+      //     deferred.resolve();
+      //   } else {
+      //     deferred.reject();
+      //   }
+      // })
+      // .catch(function(data){
+      //   deferred.reject();
+      // });
+      // return deferred.promise;
       //after create hangout change route to /calendar
       }
 

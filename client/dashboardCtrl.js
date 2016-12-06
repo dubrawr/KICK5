@@ -8,8 +8,13 @@ angular.module('myApp').controller('dashboardController',
 			$scope.hangoutForm.invited,
 			$scope.place,
 			$scope.latLong
-		);
-		$scope.showHangouts();
+		).then(function(response){
+       $('#myModal').modal('toggle');
+        console.log(response.data._id);
+      });
+    
+     // how to grab the hangouts id and location.path change?
+		
 	};
 	$scope.showHangouts = function(){
 		$http({
@@ -21,7 +26,7 @@ angular.module('myApp').controller('dashboardController',
 		
 		});
 	};
-
+ 
 	//trying to add maps here:
 	$scope.initMap = function() {
   var map = new google.maps.Map(document.getElementById('map'), {
