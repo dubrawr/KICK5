@@ -11,7 +11,7 @@ var passport = require('passport');
 var localStrategy = require('passport-local' ).Strategy;
 
 // need to requier config js file, that leads to Mlab url to hose mongo
-// var config = require('../config.js');
+var config = require('../config.js');
 
 
 // mongoose
