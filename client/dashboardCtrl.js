@@ -1,5 +1,5 @@
 angular.module('myApp').controller('dashboardController',
-	['$scope', 'AuthService', '$http', '$timeout', function($scope, AuthService, $http, $timeout){
+	['$scope', 'AuthService', '$http', '$timeout', '$location', function($scope, AuthService, $http, $timeout, $location){
 	$scope.createHangout = function(){
 		AuthService.createHangout(
 			$scope.hangoutForm.name,
@@ -11,6 +11,7 @@ angular.module('myApp').controller('dashboardController',
 		).then(function(response){
        $('#myModal').modal('toggle');
         console.log(response.data._id);
+        $timeout(function(){$location.path('/calendar/' + response.data._id);}, 1000);
       });
     
      // how to grab the hangouts id and location.path change?
