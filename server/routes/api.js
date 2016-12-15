@@ -77,8 +77,11 @@ router.post('/hangouts', function(request, response) {
   // console.log('this is the owner:' + owner);
 
   var hangoutName = request.body.hangout.trim();
-
-  var invited = request.body.invited;
+  if (!request.body.invited){
+    var invited = '';
+  } else {
+    var invited = request.body.invited;
+  }
   // console.log(invited);
 
   var startDate = request.body.startDate.trim();
