@@ -58,11 +58,14 @@ angular.module('myApp').controller('dashboardController',
     
     $scope.place = place.place_id;
     if (!place.geometry) {
+      window.alert("No details available for input: '" + place.name + "'");
       return;
     }
 
     if (place.geometry.viewport) {
       map.fitBounds(place.geometry.viewport);
+      console.log(place.geometry);
+      $scope.latLong = place.geometry.location;
     } else {
       map.setCenter(place.geometry.location);
       map.setZoom(17);
