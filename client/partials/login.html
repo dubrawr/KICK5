@@ -3,6 +3,7 @@
 <h2>Making it easier to find time to kick it with your friends.</h2>
 
 <div class="">
+
   <h2>Login</h2>
   <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
   <form class="form" ng-submit="login()">
@@ -14,6 +15,7 @@
       
         <input class="centerInput oswald" type="password" size="65" placeholder="Your Secret Password" name="password" ng-model="loginForm.password" required>
       </div>
+      <p>To demo this app, sign in with demo@demo.com/demo.</p>
       <div>
         <button type="submit" class="createhangout btn" ng-disabled="disabled">SUBMIT</button>
       </div>
