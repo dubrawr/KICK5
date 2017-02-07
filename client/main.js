@@ -3,6 +3,11 @@ var myApp = angular.module('myApp', ['ngRoute', 'angularMoment', 'ui.date']);
 myApp.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
+      templateUrl: 'partials/landingPage.html',
+      controller: 'landingController',
+      access: {restricted: false}
+    })
+    .when('/home', {
       templateUrl: 'partials/home.html',
       controller: 'dashboardController',
       access: {restricted: true}
@@ -25,10 +30,6 @@ myApp.config(function ($routeProvider) {
       templateUrl: 'partials/calendar.html',
       controller: 'calendarController',
       access: {restricted: true}
-    })
-    .when('/two', {
-      template: '<h1>This is page two!</h1>',
-      access: {restricted: false}
     })
     .otherwise({
       redirectTo: '/'

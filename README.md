@@ -7,15 +7,16 @@ A MEAN stack app where users can create an account and make event schedules wher
 Users can set an event title, date range, invite other users by email, and choose an event location that will display using the Google Places API.
 
 Working demo: https://murmuring-inlet-15369.herokuapp.com/
+Test account: demo@demo.com / demo
 
 Tech Used:
-Angular
-Mongo DB
-Express
-Node JS
-Angular Moment/Moment
-Bootstrap
-Google Places API
+Angular,
+Mongo DB,
+Express,
+Node JS,
+Angular Moment/Moment,
+Bootstrap,
+Google Places API,
 
 Usage:
 
